@@ -42,7 +42,7 @@ async def connect(account, password, character_name):
     account = await account_login(account, password)
     character = account.get_character(character_name)
     chat = await start_chat(character)
-    channel = await chat.join("Development")
+    channel = await chat.join(os.environ['CHAN'])
     channel.add_listener(command_listener)
     channel.send("dragulator online")
 
@@ -51,5 +51,7 @@ if __name__ == '__main__':
     logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s - %(message)s')
     logger.setLevel(logging.INFO)
     from sys import argv
-    asyncio.ensure_future(connect(argv[1], argv[2], argv[3]))
+    asyncio.ensure_future(connect(os.environ['USER'],
+                                  os.environ['PASS'],
+                                  os.environ['CHAR']))
     asyncio.get_event_loop().run_forever()
