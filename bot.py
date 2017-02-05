@@ -1,3 +1,4 @@
+print("starting")
 import logging
 from flist import account_login, start_chat
 import asyncio
