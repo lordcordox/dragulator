@@ -42,6 +42,7 @@ class Account:
 
     async def refresh(self, password):
         data = await api.get_ticket(self.account, password)
+        print(data)
         self.bookmarks = data['bookmarks']
         self.friends = data['friends']
         self._ticket = data['ticket']
