@@ -4,6 +4,7 @@ from flist import account_login, start_chat
 import asyncio
 import random
 import re
+import os
 
 logger = logging.getLogger('dice_bot')
 
